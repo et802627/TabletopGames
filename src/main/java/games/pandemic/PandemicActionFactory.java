@@ -333,7 +333,9 @@ class PandemicActionFactory {
             Card card = ph.getComponents().get(cp);
             if (((PropertyString)card.getProperty(nameHash)).value.equals("Resilient Population")) {
                 for (int idx = 0; idx < nInfectDiscards; idx++) {
-                    acts.add(new RemoveComponentFromDeck<Card>(ph.getComponentID(), playerDiscard.getComponentID(), cp, infectionDiscard.getComponentID(), idx));
+                    new RemoveComponentSuperParameters();
+                    RemoveComponentSuperParameters variables = new RemoveComponentSuperParameters(ph.getComponentID(), playerDiscard.getComponentID(), cp);
+                    acts.add(new RemoveComponentFromDeck<Card>(variables, infectionDiscard.getComponentID(), idx));
                 }
                 break;
             }
